@@ -4,7 +4,7 @@
 
 ![Hero Banner](https://github.com/Aakruti17/Medicine-info-Generator-new/blob/bba84de20674ce3ab6093f7388687cfe61a4d034/medicine_info_generator%20new/medicine_info_generator%20-%20Copy/screenshot/banner.png)
 
----
+
 
 ## 📌 Overview
 
@@ -16,7 +16,7 @@ The **Medicine Info Generator** is a web application designed to provide detaile
 
 Users can also **download** the information as **PDF** or **TXT** files and access their **recent search history** for convenience.
 
----
+
 
 ## ✨ Features
 
@@ -27,13 +27,13 @@ Users can also **download** the information as **PDF** or **TXT** files and acce
 - 🧾 Rich AI responses formatted using **Markdown**
 - 📱 Fully **responsive UI** with modern styling and icons
 
----
+
 
 ## 🚀 Live Demo
 
 👉 [Click here to try it live](https://your-username.github.io/medicine-info-generator)
 
----
+
 
 ## 🖼️ Screenshots
 
@@ -41,7 +41,7 @@ Users can also **download** the information as **PDF** or **TXT** files and acce
 |-----------|-------------|---------------|
 | ![Home](https://github.com/Aakruti17/Medicine-info-Generator-new/blob/9cc150554bcd24d0a8abbc638179565030a27656/medicine_info_generator%20new/medicine_info_generator%20-%20Copy/screenshot/home.png) | ![Result](https://github.com/Aakruti17/Medicine-info-Generator-new/blob/9cc150554bcd24d0a8abbc638179565030a27656/medicine_info_generator%20new/medicine_info_generator%20-%20Copy/screenshot/result.png) | ![PDF](https://github.com/Aakruti17/Medicine-info-Generator-new/blob/9cc150554bcd24d0a8abbc638179565030a27656/medicine_info_generator%20new/medicine_info_generator%20-%20Copy/screenshot/pdf.png) |
 
----
+
 
 ## 🛠 Tech Stack
 
@@ -55,7 +55,7 @@ Users can also **download** the information as **PDF** or **TXT** files and acce
 | 📝 Markdown      | Marked.js                            |
 | 📦 Storage       | localStorage (for recent searches)   |
 
----
+
 
 ## 📁 Project Structure
 medicine-info-generator/ <br/>
@@ -80,7 +80,7 @@ medicine-info-generator/ <br/>
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/your-username/medicine-info-generator.git
+git clone https://github.com/Aakruti17/Medicine-info-Generator-new.git
 cd medicine-info-generator
 ```
 2. **Add your Google Gemini API Key**
