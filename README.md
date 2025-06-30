@@ -31,7 +31,7 @@ Users can also **download** the information as **PDF** or **TXT** files and acce
 
 ## 🚀 Live Demo
 
-👉 [Click here to try it live](https://your-username.github.io/medicine-info-generator)
+👉 [Click here to try it live](https://medicine-info-generator-new.netlify.app/)
 
 
 
