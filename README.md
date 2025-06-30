@@ -58,4 +58,62 @@ Users can also **download** the information as **PDF** or **TXT** files and acce
 ---
 
 ## 📁 Project Structure
+medicine-info-generator/
+├── index.html # Main HTML
+├── style.css # App styling
+├── /fonts/
+│ └── NotoSansDevanagari-Regular.ttf
+├── /screenshots/
+│ ├── banner.png
+│ ├── home.png
+│ ├── result.png
+│ └── pdf.png
+├── /lang/
+│ ├── lang-en.json
+│ ├── lang-hi.json
+│ └── lang-mr.json
+├── /images/
+│ ├── medicine.jpg
+│ └── logo.jpg
 
+## 🔑 Setup & Usage
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/your-username/medicine-info-generator.git
+cd medicine-info-generator
+
+2. **Add your Google Gemini API Key**
+Replace the placeholder API key in index.html:
+javascript
+```
+const API_KEY = "your-api-key-here";
+
+3. **Open the app**
+You can either:
+Open index.html directly in a browser
+Or use a local server (like Live Server in VS Code)
+
+## 🧪 How It Works
+* When a user enters a medicine name, a prompt is sent to Google’s Gemini model
+* AI returns structured information using Markdown
+* The result is rendered with marked.js for proper formatting
+* Language preference is applied via predefined instructions
+* Downloads are handled using jsPDF and Blob API
+
+## 📥 Download Options
+* TXT File: Plain text export of the AI result
+* PDF File: Supports custom fonts (Noto Sans Devanagari) for Hindi/Marathi
+
+## 🌐 Multilingual Support
+Available in:
+* 🇬🇧 English (lang-en.json)
+* 🇮🇳 हिंदी (lang-hi.json)
+* 🇮🇳 मराठी (lang-mr.json)
+To add more languages, simply create a new JSON file and update the langFiles map in the script.
+
+## 👤 Author
+Aakruti Gulhane
+📧 [aakrutigulhane117@gmail.com]
+🌐 [Portfolio or LinkedIn]
+🔗 GitHub Profile
