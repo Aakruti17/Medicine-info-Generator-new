@@ -39,7 +39,7 @@ Users can also **download** the information as **PDF** or **TXT** files and acce
 
 | Home Page | AI Response | PDF Download |
 |-----------|-------------|---------------|
-| ![Home](screenshots/home.png) | ![Result](screenshots/result.png) | ![PDF](screenshots/pdf.png) |
+| ![Home](https://github.com/Aakruti17/Medicine-info-Generator-new/blob/9cc150554bcd24d0a8abbc638179565030a27656/medicine_info_generator%20new/medicine_info_generator%20-%20Copy/screenshot/home.png) | ![Result](https://github.com/Aakruti17/Medicine-info-Generator-new/blob/9cc150554bcd24d0a8abbc638179565030a27656/medicine_info_generator%20new/medicine_info_generator%20-%20Copy/screenshot/result.png) | ![PDF](https://github.com/Aakruti17/Medicine-info-Generator-new/blob/9cc150554bcd24d0a8abbc638179565030a27656/medicine_info_generator%20new/medicine_info_generator%20-%20Copy/screenshot/pdf.png) |
 
 ---
 
@@ -115,5 +115,5 @@ To add more languages, simply create a new JSON file and update the langFiles ma
 ## 👤 Author
 Aakruti Gulhane
 * 📧 aakrutigulhane117@gmail.com
-* 🌐 [https://github.com/Aakruti17]
+* 🌐 https://github.com/Aakruti17
 * 🔗 https://www.linkedin.com/in/aakruti-gulhane-397035291/
