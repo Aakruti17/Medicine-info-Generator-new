@@ -114,6 +114,6 @@ To add more languages, simply create a new JSON file and update the langFiles ma
 
 ## 👤 Author
 Aakruti Gulhane
-* 📧 [aakrutigulhane117@gmail.com]
-* 🌐 [Portfolio or LinkedIn]
-* 🔗 GitHub Profile
+* 📧 aakrutigulhane117@gmail.com
+* 🌐 [https://github.com/Aakruti17]
+* 🔗 https://www.linkedin.com/in/aakruti-gulhane-397035291/
