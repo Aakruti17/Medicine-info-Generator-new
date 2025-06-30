@@ -109,7 +109,7 @@ Or use a local server (like Live Server in VS Code)
 Available in:
 * 🇬🇧 English (lang-en.json)
 * 🇮🇳 हिंदी (lang-hi.json)
-* 🇮🇳 मराठी (lang-mr.json)
+* 🇮🇳 मराठी (lang-mr.json) </br>
 To add more languages, simply create a new JSON file and update the langFiles map in the script.
 
 ## 👤 Author
