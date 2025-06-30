@@ -10,9 +10,9 @@
 
 The **Medicine Info Generator** is a web application designed to provide detailed, AI-generated information about medicines. It supports **English**, **Hindi**, and **Marathi**, allowing users to access data such as:
 
-- 🔹 Uses and benefits  
-- 🔹 Side effects  
-- 🔹 Warnings and precautions  
+- Uses and benefits  
+- Side effects  
+- Warnings and precautions  
 
 Users can also **download** the information as **PDF** or **TXT** files and access their **recent search history** for convenience.
 
