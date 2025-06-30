@@ -58,23 +58,23 @@ Users can also **download** the information as **PDF** or **TXT** files and acce
 ---
 
 ## 📁 Project Structure
-medicine-info-generator/
-├── index.html # Main HTML
-├── style.css # App styling
-├── /fonts/
-│ └── NotoSansDevanagari-Regular.ttf
-├── /screenshots/
-│ ├── banner.png
-│ ├── home.png
-│ ├── result.png
-│ └── pdf.png
-├── /lang/
-│ ├── lang-en.json
-│ ├── lang-hi.json
-│ └── lang-mr.json
-├── /images/
-│ ├── medicine.jpg
-│ └── logo.jpg
+medicine-info-generator/ <br/>
+├── index.html # Main HTML <br/>
+├── style.css # App styling <br/>
+├── /fonts/ <br/>
+│ └── NotoSansDevanagari-Regular.ttf <br/>
+├── /screenshots/ <br/>
+│ ├── banner.png <br/>
+│ ├── home.png <br/>
+│ ├── result.png <br/>
+│ └── pdf.png <br/>
+├── /lang/ <br/>
+│ ├── lang-en.json <br/>
+│ ├── lang-hi.json <br/>
+│ └── lang-mr.json <br/>
+├── /images/ <br/>
+│ ├── medicine.jpg <br/>
+│ └── logo.jpg <br/>
 
 ## 🔑 Setup & Usage
 
@@ -82,13 +82,13 @@ medicine-info-generator/
 ```bash
 git clone https://github.com/your-username/medicine-info-generator.git
 cd medicine-info-generator
-
+```
 2. **Add your Google Gemini API Key**
 Replace the placeholder API key in index.html:
 javascript
 ```
 const API_KEY = "your-api-key-here";
-
+```
 3. **Open the app**
 You can either:
 Open index.html directly in a browser
@@ -114,6 +114,6 @@ To add more languages, simply create a new JSON file and update the langFiles ma
 
 ## 👤 Author
 Aakruti Gulhane
-📧 [aakrutigulhane117@gmail.com]
-🌐 [Portfolio or LinkedIn]
-🔗 GitHub Profile
+* 📧 [aakrutigulhane117@gmail.com]
+* 🌐 [Portfolio or LinkedIn]
+* 🔗 GitHub Profile
