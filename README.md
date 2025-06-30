@@ -2,7 +2,7 @@
 
 **An AI-powered multilingual medicine information web app using Google's Gemini API**
 
-![Hero Banner](screenshots/banner.png)
+![Hero Banner](https://github.com/Aakruti17/Medicine-info-Generator new/blob/bba84de20674ce3ab6093f7388687cfe61a4d034/medicine_info_generator%20new/medicine_info_generator%20-%20Copy/screenshot/banner.png)
 
 ---
 
