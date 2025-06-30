@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medicine Info Generator</title>
+  <link rel="icon" type="image/png" href="logo.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <img src="medicine.jpg" alt="Medicine" class="hero-image">
+      <div class="hero-overlay">
+        <h1 id="title">Medicine Info Generator</h1>
+        <p id="subtitle">Your AI-Powered Medicine Guide</p>
+      </div>
+    </div>
+    <div class="search-area improved-search-area">
+      <div class="lang-selector-above-input right-align">
+        <select id="langSelect">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी</option>
+          <option value="mr">मराठी</option>
+        </select>
+      </div>
+      <div class="input-group improved-input-group">
+        <input type="text" id="name" placeholder="Enter Medicine Name">
+        <i class="fas fa-pills"></i>
+      </div>
+      <button id="btn" class="improved-btn"><i class="fas fa-search"></i> Generate Info</button>
+    </div>
+    <!-- Recent Search History -->
+    <div id="recentSearches" class="recent-searches"></div>
+    <div id="loading">Loading...</div>
+    <!-- Download buttons -->
+    <div id="downloadBtns" style="display:none;">
+      <button id="downloadPdfBtn"><i class="fas fa-file-pdf"></i> Download PDF</button>
+      <button id="downloadTxtBtn"><i class="fas fa-file-alt"></i> Download TXT</button>
+    </div>
+    <div id="res" class="improved-result-card"></div>
+    <div id="exampleText"></div>
+    <div class="footer">
+      <p>© 2025 Medicine Info Generator</p>
+    </div>
+  </div>
+
+  <script>
+    // Language Logic
+    let currentLang = 'en';
+    const langFiles = {
+      en: 'lang-en.json',
+      hi: 'lang-hi.json',
+      mr: 'lang-mr.json'
+    };
+
+    async function loadLanguage(lang) {
+      try {
+        const response = await fetch(langFiles[lang]);
+        const data = await response.json();
+        applyTranslations(data);
+      } catch (e) {
+        console.error("Error loading language:", e);
+      }
+    }
+
+    function applyTranslations(data) {
+      document.getElementById('title').textContent = data.title;
+      document.getElementById('subtitle').textContent = data.subtitle;
+      document.getElementById('name').placeholder = data.placeholder;
+      document.getElementById('btn').innerHTML = `<i class="fas fa-search"></i> ${data.button}`;
+      document.getElementById('loading').textContent = data.loading;
+      document.getElementById('exampleText').textContent = data.example;
+    }
+
+    document.getElementById('langSelect').addEventListener('change', function(e) {
+      currentLang = e.target.value;
+      loadLanguage(currentLang);
+    });
+
+    // Initial load
+    loadLanguage(currentLang);
+  </script>
+  <script type="importmap">
+    {
+      "imports": {
+        "@google/generative-ai": "https://esm.run/@google/generative-ai"
+      }
+    }
+  </script>
+  <script type="module">
+    import { GoogleGenerativeAI } from "@google/generative-ai";
+    const API_KEY = "AIzaSyBc6xblcBNJ1oDkgtKPNFgZuIExLu7jN5I";
+    const genAI = new GoogleGenerativeAI(API_KEY);
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+    document.getElementById('loading').style.display = "none";
+
+    // Language instructions mapping
+    const langInstructions = {
+      en: '',
+      hi: 'Please reply in Hindi (हिंदी में उत्तर दें).',
+      mr: 'Please reply in Marathi (मराठीत उत्तर द्या).'
+    };
+
+    async function test(medicineName = null) {
+      const name = medicineName || document.getElementById('name').value.trim();
+      if (!name) return;
+      const currentLang = document.getElementById('langSelect').value;
+      document.getElementById('loading').style.display = "block";
+      document.getElementById('downloadBtns').style.display = "none";
+      document.getElementById('res').innerHTML = "";
+
+      let prompt = `
+        You are a hyper-caffeinated AI Healthcare Expert who can give information about Medicine.
+        You are a Healthcare Expert.
+
+        Example responses:
+        Why we use this Medicine
+          1. point 1
+          2. point 2
+          ...
+        Side effects
+          1. point 1
+          2. point 2
+          ...
+        Warnings and precautions
+          1. point 1
+          2. point 2
+          ...
+
+        Tell me about ${name}
+        ${langInstructions[currentLang]}
+      `;
+
+      let res = await model.generateContent(prompt);
+      const response = await res.response;
+      const text = response.text();
+      const htmlContent = marked.parse(text);
+
+      // Add a medicine icon and card style
+      document.getElementById('res').innerHTML =
+        `<div class="result-card-header">
+          <i class="fas fa-capsules"></i>
+          <span class="result-card-title">${name}</span>
+        </div>
+        <div class="result-card-body">${htmlContent}</div>`;
+
+      document.getElementById('loading').style.display = "none";
+      document.getElementById('downloadBtns').style.display = "flex";
+
+      // Save to recent searches
+      saveSearch(name);
+      renderHistory();
+    }
+
+    document.getElementById('btn').addEventListener('click', () => test());
+
+    // Recent Search History Logic
+    function saveSearch(medicine) {
+      let history = JSON.parse(localStorage.getItem('searchHistory')) || [];
+      medicine = medicine.trim();
+      if (!medicine) return;
+      // Remove if already present
+      history = history.filter(med => med.toLowerCase() !== medicine.toLowerCase());
+      history.unshift(medicine);
+      if (history.length > 5) history = history.slice(0, 5);
+      localStorage.setItem('searchHistory', JSON.stringify(history));
+    }
+
+    // Function to delete a specific search from history
+    window.deleteSearch = function(medicine) {
+      let history = JSON.parse(localStorage.getItem('searchHistory')) || [];
+      // Filter out the medicine to delete (case insensitive)
+      history = history.filter(med => med.toLowerCase() !== medicine.toLowerCase());
+      localStorage.setItem('searchHistory', JSON.stringify(history));
+      renderHistory();
+    }
+
+    function renderHistory() {
+      let history = JSON.parse(localStorage.getItem('searchHistory')) || [];
+      if (history.length === 0) {
+        document.getElementById('recentSearches').innerHTML = '';
+        return;
+      }
+      let html = `<div class="recent-label"><i class="fas fa-history"></i> Recent Searches:</div>`;
+      html += history.map(med => `
+        <span class="recent-tag-container">
+          <button class="recent-tag" onclick="searchFromHistory('${med.replace(/'/g, "\\'")}')">${med}</button>
+          <button class="recent-tag delete-btn" onclick="deleteSearch('${med.replace(/'/g, "\\'")}')">
+            <i class="fas fa-times"></i>
+          </button>
+        </span>
+      `).join('');
+      document.getElementById('recentSearches').innerHTML = html;
+    }
+
+    // Expose to window for inline onclick
+    window.searchFromHistory = function(med) {
+      document.getElementById('name').value = med;
+      test(med);
+    }
+
+    // Render on load
+    renderHistory();
+
+    // Download as TXT
+    document.getElementById('downloadTxtBtn').addEventListener('click', () => {
+      let title = document.getElementById('name').value || "Medicine Info";
+      let text = document.getElementById('res').innerText;
+      const blob = new Blob([title + "\n\n" + text], { type: "text/plain" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `${title.replace(/\s+/g, "_")}_info.txt`;
+      link.click();
+      URL.revokeObjectURL(link.href);
+    });
+
+    // Download as PDF (works for all languages and formatting)
+    document.getElementById('downloadPdfBtn').addEventListener('click', async () => {
+      const { jsPDF } = window.jspdf;
+      const resElement = document.getElementById('res');
+      const title = document.getElementById('name').value || "Medicine Info";
+      html2canvas(resElement, { scale: 2 }).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF({
+          orientation: 'p',
+          unit: 'mm',
+          format: 'a4'
+        });
+        const pageWidth = pdf.internal.pageSize.getWidth();
+        const pageHeight = pdf.internal.pageSize.getHeight();
+        const imgProps = pdf.getImageProperties(imgData);
+        let pdfWidth = pageWidth - 20;
+        let pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+        let y = 20;
+        if (pdfHeight > pageHeight - 40) {
+          pdfHeight = pageHeight - 40;
+          pdfWidth = (imgProps.width * pdfHeight) / imgProps.height;
+        }
+        pdf.text(title, 10, 15, { maxWidth: pageWidth - 20 });
+        pdf.addImage(imgData, 'PNG', 10, y, pdfWidth, pdfHeight);
+        pdf.save(`${title.replace(/\s+/g, "_")}_info.pdf`);
+      });
+    });
+
+  </script>
+</body>
+</html>

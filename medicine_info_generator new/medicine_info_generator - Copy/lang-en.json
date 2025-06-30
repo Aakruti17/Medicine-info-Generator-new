@@ -1,0 +1,8 @@
+{
+  "title": "Medicine info Generator",
+  "subtitle": "Your AI-Powered Medicine Guide",
+  "placeholder": "Enter Medicine Name",
+  "button": "Generate",
+  "loading": "Loading...",
+  "example": "Example: Paracetamol, Ibuprofen"
+}
