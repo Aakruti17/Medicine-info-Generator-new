@@ -81,7 +81,7 @@ medicine-info-generator/ <br/>
 1. **Clone the repository**
 ```bash
 git clone https://github.com/Aakruti17/Medicine-info-Generator-new.git
-cd medicine-info-generator
+cd Medicine-info-Generator-new
 ```
 2. **Add your Google Gemini API Key**
 Replace the placeholder API key in index.html:
